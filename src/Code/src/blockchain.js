@@ -14,7 +14,7 @@ class Transaction {
    * @param {number} amountEnergy
    * @param {number} pricePerEnergy
    * @param {number} gasPrice
-   * @param {any} contract
+   * @param {TimeBasedEnergyTradeContract} contract
    */
   constructor(fromAddress, toAddress, amount, amountEnergy, pricePerEnergy, gasPrice, contract = null) {
     this.fromAddress = fromAddress;
