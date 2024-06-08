@@ -1,0 +1,82 @@
+<div class="container">
+	<h1>Login</h1>
+</div>
+
+<div class="form-group">
+    <label for="username">Please enter your username</label>
+    <input type="text" class="form-control" id="username" placeholder="Username" aria-describedby="toAddressHelp" [(ngModel)]="current.username">
+    <small id="toAddressHelp" class="form-text text-muted">
+    	(Ignore this message)
+    </small>
+</div>
+
+<div class="form-group">
+    <label for="password">Please enter your password</label>
+    <input type="password" class="form-control" id="password" aria-describedby="toAddressHelp" [(ngModel)]="current.password">
+    <small id="toAddressHelp" class="form-text text-muted">
+    	(Ignore this message)
+    </small>
+</div>
+
+
+<button (click)="signIn()" type="submit" class="btn btn-primary">Sign In</button>
+
+<div>
+    {{rank}}
+</div>
+
+<div *ngIf="rank[0] === 0">
+    Level 0 account: Access Denied; wrong username or password
+</div>
+
+<div *ngIf="rank[0] === 1">
+    Level 1 (alpha) account: Access granted
+</div>
+
+<div *ngIf="rank[0] === 2">
+    Level 2 account: Access granted
+</div>
+
+<div *ngIf="rank[0] === 3">
+    Level 3 account: Access granted
+
+</div>
+
+<!-- <div>
+    Username: {{displayUsername}}
+</div>  
+<div>
+    Password: {{displayPassword}}
+</div> -->
+  
+
+<div></div>
+<!-- <div class="container">
+	<label for="tbuser">Username</label>
+    <input type="text" id="tbuser" placeholder="Enter your username">
+    <div></div>
+
+    <label for="pbuser">Password</label>
+    <input type="text" id="pbuser" placeholder="Enter your password">
+    <div></div>
+
+    <input type="button" id="btn1" value="click me">
+    <p class="output" id="output1"></p>
+
+</div> -->
+
+<form>
+<input type="email" placeholder="enter your email">
+<input type="checkbox">
+<input type="radio" name="radiobutton">
+<input type="radio" name="radiobutton">
+<input type="radio" name="radiobutton">
+
+<select>
+    <option>Option 1</option>
+    <option>Option 1</option>
+    <option>Option 1</option>
+</select>
+
+<input type="submit">
+</form>

@@ -1,0 +1,7 @@
+
+<a href="#" routerLink='/add-post' class="btn btn-dark mt-4">Add Post</a>
+
+
+<div class="row">
+<app-gets *ngFor="let post of posts" (onDeletePost)="deletePost(post)" class="col-12 col-lg-3" [post1]="post"></app-gets>
+</div>

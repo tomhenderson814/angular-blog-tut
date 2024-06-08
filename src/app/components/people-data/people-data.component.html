@@ -1,0 +1,93 @@
+
+<div class="container">
+    <div>Alpha Account</div>
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Username</th>
+          <th scope="col">Password</th>
+          <th scope="col">Private Key</th>
+          <th scope="col">Public Key</th>
+          <th scope="col">Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="text-truncate" style="max-width: 100px;">{{alphaAccount.firstName}}</td>
+          <td>{{alphaAccount.lastName}}</td>
+          <td>{{alphaAccount.username}}</td>
+          <td>{{alphaAccount.password}}</td>
+          <td>{{alphaAccount.walletKeys[0].privateKey}}</td>
+          <td>{{alphaAccount.walletKeys[0].publicKey}}</td>
+          <td>{{returnBalanceAlpha(alphaAccount.userIndex)}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    
+    <div class="container">
+    <div>Beta Accounts</div>
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Username</th>
+          <th scope="col">Password</th>
+          <th scope="col">Private Key</th>
+          <th scope="col">Public Key</th>
+          <th scope="col">Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let beta of betaAccounts">
+          <td>{{beta.userIndex}}</td>
+          <td class="text-truncate" style="max-width: 100px;">{{beta.firstName}}</td>
+          <td>{{beta.lastName}}</td>
+          <td>{{beta.username}}</td>
+          <td>{{beta.password}}</td>
+          <td>{{beta.walletKeys[0].privateKey}}</td>
+          <td>{{beta.walletKeys[0].publicKey}}</td>
+          <td>{{returnBalanceBeta(beta.userIndex)}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    
+    
+    
+    <div></div>
+    
+    <div class="container">
+    <div> Gamma Accounts</div>
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Username</th>
+          <th scope="col">Password</th>
+          <th scope="col">Private Key</th>
+          <th scope="col">Public Key</th>
+          <th scope="col">Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let gamma of gammaAccounts">
+          <td>{{gamma.userIndex}}</td>
+          <td class="text-truncate" style="max-width: 100px;">{{gamma.firstName}}</td>
+          <td>{{gamma.lastName}}</td>
+          <td>{{gamma.username}}</td>
+          <td>{{gamma.password}}</td>
+          <td>{{gamma.walletKeys[0].privateKey}}</td>
+          <td>{{gamma.walletKeys[0].publicKey}}</td>
+          <td>{{returnBalanceGamma(gamma.userIndex)}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>

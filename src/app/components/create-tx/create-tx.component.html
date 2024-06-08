@@ -1,0 +1,107 @@
+<div class="container">
+	<h1>Create transaction</h1>
+	<p>Transfer some money to someone!</p>
+
+
+
+<!-- <div *ngIf="dataBase.alphaAccount.walletKeys[0].publicKey !== null">
+	<div *ngIf="ownWalletKey.publicKey === dataBase.alphaAccount?.walletKeys[0].publicKey">
+		<div class="form-group">
+			<label for="AfromAddress">From address</label>
+			<input type="text" class="form-control" id="AfromAddress" aria-describedby="AfromAddressHelp" [(ngModel)]="blockchainService.dataBaseInstance.alphaAccount.walletKeys[0].publicKey">
+			<small id="AfromAddressHelp" class="form-text text-muted">
+				Alpha
+			</small>
+  	    </div>
+	</div>
+</div>
+    
+
+	<div *ngFor="let beta of dataBase.betaAccounts;">
+		<div *ngIf="beta.walletKeys[0].publicKey === ownWalletKey.publicKey">
+			<div class="form-group">
+				<label for="BfromAddress">From address</label>
+				<input type="text" class="form-control" id="BfromAddress" aria-describedby="BfromAddressHelp" [(ngModel)]="beta.walletKeys[0].publicKey">
+				<small id="BfromAddressHelp" class="form-text text-muted">
+					Beta
+				</small>
+			</div>
+		</div>
+	</div>
+
+
+    <div *ngFor="let gamma of dataBase.gammaAccounts;">
+		<div *ngIf="gamma.walletKeys[0].publicKey === ownWalletKey.publicKey">
+			<div class="form-group">
+	    	<label for="GfromAddress">From address</label>
+	    	<input type="text" class="form-control" id="GfromAddress" aria-describedby="GfromAddressHelp" [(ngModel)]="gamma.walletKeys[0].publicKey">
+	    	<small id="GfromAddressHelp" class="form-text text-muted">
+				Gamma
+			</small>
+  			</div>
+		</div>
+	</div>
+    
+    <div *ngIf="dataBase.emptyAccount.walletKeys[0].publicKey === ownWalletKey.publicKey">
+        <div class="form-group">
+            <label for="BfromAddress">From address</label>
+            <input type="text" class="form-control" id="BfromAddress" aria-describedby="BfromAddressHelp" [(ngModel)]="dataBase.emptyAccount.walletKeys[0].publicKey">
+            <small id="BfromAddressHelp" class="form-text text-muted">
+                Empty
+            </small>
+        </div>
+    </div> -->
+
+    <div *ngIf="ownWalletKey.publicKey !== null">
+        <div class="form-group">
+            <label for="fromAddress">From address</label>
+            <input type="text" class="form-control" id="fromAddress" aria-describedby="fromAddressHelp" [(ngModel)]="ownWalletKey.publicKey">
+            <small id="fromAddressHelp" class="form-text text-muted">
+                {{ getAccountType(ownWalletKey.publicKey) }}
+            </small>
+        </div>
+    </div>
+
+
+  	<div class="form-group">
+	    <label for="toAddress">To address</label>
+	    <input type="text" class="form-control" id="toAddress" aria-describedby="toAddressHelp" [(ngModel)]="newTx.toAddress">
+	    <small id="toAddressHelp" class="form-text text-muted">
+	    	The address of the wallet where you want to send the money to. You can type random text here (if you are not interested in recovering the funds)
+	    </small>
+  	</div>
+
+  	<div class="form-group">
+	    <label for="amount">Amount</label>
+	    <input type="number" class="form-control" id="amount" aria-describedby="amountHelp" [(ngModel)]="newTx.amount">
+	    <small id="amountHelp" class="form-text text-muted">
+	    	You can transfer any amount. Account balance is not checked in this demo. Have at it!
+	    </small>
+  	</div>
+
+  	<button (click)="createTransaction()" type="submit" class="btn btn-primary">Sign & create transaction</button>
+
+</div>
+
+<div class="container">
+	
+	<div class="form-group">
+	    <label for="duration">Duration</label>
+	    <input type="number" class="form-control" id="duration" aria-describedby="durationHelp" [(ngModel)]="duration">
+	    <small id="durationHelp" class="form-text text-muted">
+	    	How long you want the trade to last
+	    </small>
+  	</div>
+
+  	<div class="form-group">
+	    <label for="energyTotal">energyTotal</label>
+	    <input type="number" class="form-control" id="energyTotal" aria-describedby="energyTotalHelp" [(ngModel)]="energyTotal">
+	    <small id="energyTotalHelp" class="form-text text-muted">
+	    	The limit of how much energy you want to trade
+	    </small>
+  	</div>
+
+
+	<button (click)="perSecondTrade()" type="submit" class="btn btn-primary">perSecondTrade</button>
+ 
+</div>
