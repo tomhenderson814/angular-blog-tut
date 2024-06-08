@@ -16,8 +16,8 @@ export class CreateTransactionComponent implements OnInit {
   public accumEnergy = 0;
   public timer = 0;
   public newTrans;
-  public rank
-  public index
+  public rank;
+  public index;
   public preserved;
   public energyTotal: any;
   public duration: any;

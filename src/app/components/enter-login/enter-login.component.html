@@ -25,19 +25,19 @@
     {{rank}}
 </div>
 
-<div *ngIf="rank[0] === 0">
+<div *ngIf="rank === 0">
     Level 0 account: Access Denied; wrong username or password
 </div>
 
-<div *ngIf="rank[0] === 1">
+<div *ngIf="rank === 1">
     Level 1 (alpha) account: Access granted
 </div>
 
-<div *ngIf="rank[0] === 2">
+<div *ngIf="rank === 2">
     Level 2 account: Access granted
 </div>
 
-<div *ngIf="rank[0] === 3">
+<div *ngIf="rank === 3">
     Level 3 account: Access granted
 
 </div>

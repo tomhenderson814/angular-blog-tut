@@ -45,7 +45,7 @@ export class EnterLoginComponent implements OnInit {
   this.blockchainService.login(this.current.username, this.current.password);
   this.displayUsername = this.current.username;
   this.displayPassword = this.current.password;
-  this.rank = this.data.accountClass;
+  this.rank = this.data.accountClass[0];
   let dataBase = this.blockchainService.dataBaseInstance;
   console.log(dataBase.accountClass[0]);
   let ac = dataBase.loggedIn(dataBase.accountClass[0], dataBase.accountClass[1])

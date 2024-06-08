@@ -17,8 +17,8 @@ export class CreateTxComponent implements OnInit {
   public timer = 0;
   public newTrans;
   public preserved;
-  public rank
-  public index
+  public rank;
+  public index;
   public energyTotal: any;
   public duration: any;
   public ownWalletKey;

@@ -19,7 +19,7 @@ export class PeopleDataComponent implements OnInit {
     this.gammaAccounts = this.data.gammaAccounts;
   
   }
-  returnBalanceAlpha(index){
+  returnBalanceAlpha(){
     let b = this.blockchainService.blockchainInstance.getBalanceOfAddress(this.data.alphaAccount.walletKeys[0].publicKey);
     return b;
   }
