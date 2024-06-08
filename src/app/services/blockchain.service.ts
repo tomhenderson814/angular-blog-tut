@@ -21,7 +21,7 @@ export class BlockchainService {
   public index;
   // public accountClassSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  private apiURL = "http://localhost:3000/posts"
+  private apiURL = "https://json-server-tut-54dd59643d1b.herokuapp.com/posts"
   
   constructor(private http: HttpClient) {
     this.dataBaseInstance = new peopleDatabase("Thomas", "Henderson", "Tom1", "Artie1");
