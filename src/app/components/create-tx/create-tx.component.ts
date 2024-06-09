@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { BlockchainService } from '../../services/blockchain.service';
-import { Transaction } from '../../../code/src/blockchain.js';
+import { Transaction } from '../../../Code/src/blockchain.js';
 
 @Component({
   selector: 'app-create-tx',
@@ -23,13 +23,16 @@ export class CreateTxComponent implements OnInit {
   public duration: any;
   public ownWalletKey;
   public dataBase;
+  public amount;
+  public toAddress;
  
   constructor(private blockchainService: BlockchainService, private router: Router) {
     this.dataBase = this.blockchainService.dataBaseInstance;
     this.rank = this.dataBase.accountClass[0];
     this.index = this.dataBase.accountClass[1];
     this.ownWalletKey = this.dataBase.loggedIn(this.rank, this.index).walletKeys[0];
-    this.newTx = new Transaction();
+
+
     
   }
 
@@ -37,24 +40,23 @@ export class CreateTxComponent implements OnInit {
   }
   
   createTransaction() {
-    const newTx = this.newTx;
 
-    
 
-    // Set the FROM address and sign the transaction
-    newTx.fromAddress = this.ownWalletKey.publicKey;
-    console.log(this.ownWalletKey.publicKey);
+   const theKey = this.ownWalletKey.publicKey;
+   const money = this.amount;
+   const To = this.toAddress;
+
+    const newTx = new Transaction(theKey, To, money, 0, 0, 0, )
     newTx.signTransaction(this.ownWalletKey.keyObj);
-
     try {
-      this.blockchainService.addTransaction(this.newTx);
+      this.blockchainService.addTransaction(newTx);
     } catch (e) {
       alert(e);
       return;
     }
 
     this.router.navigate(['/new/transaction/pending', { addedTx: true }]);
-    this.newTx = new Transaction();
+    this.newTx = null;
   }
 
   calculateExchangeRate(supply, demand) {
@@ -95,21 +97,22 @@ export class CreateTxComponent implements OnInit {
           throw new Error('You must set a maximum duration or a maximum energy received');
       }
 
-      this.newTrans = new Transaction();
+      //this.newTrans = new Transaction();
 
       //this.newTrans.fromAddress = this.preserved;
-      this.newTrans.fromAddress = this.ownWalletKey.publicKey;
-      this.newTrans.toAddress = this.newTx.toAddress;
-      this.preserved = this.newTrans.toAddress;
+      //this.newTrans.fromAddress = this.ownWalletKey.publicKey;
+      //this.newTrans.toAddress = this.newTx.toAddress;
+      //this.preserved = this.newTrans.toAddress;
       const currentEnergy = this.outputCapacity();
+      const Too = this.toAddress;
 
       const exchangeRate = this.calculateExchangeRate(this.sup, this.dem);
       const moneySent = exchangeRate * currentEnergy; // cost/kWh * kWh (cost in cents to the receiver) - $/(kWh * min) * kWh * 1 min
-      this.newTrans.gasPrice = moneySent * 0.02;
-      this.newTrans.amount = moneySent;
-      this.newTrans.amountEnergy = currentEnergy;
-      this.newTrans.pricePerEnergy = exchangeRate;
-    
+      //this.newTrans.gasPrice = moneySent * 0.02;
+      //this.newTrans.amount = moneySent;
+      //this.newTrans.amountEnergy = currentEnergy;
+      //this.newTrans.pricePerEnergy = exchangeRate;
+      this.newTrans = new Transaction(this.ownWalletKey.publicKey, Too, moneySent, currentEnergy, exchangeRate, moneySent*0.02)
 
       if ( this.blockchainService.blockchainInstance.getBalanceOfAddress(this.ownWalletKey.publicKey) < moneySent) {
           throw new Error('Insufficient balance');

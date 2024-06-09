@@ -148,4 +148,4 @@ class IWalletKey {
 
 
 module.exports.peopleDatabase = peopleDatabase;
-//module.exports.IWalletKey = IWalletKey;
+module.exports.IWalletKey = IWalletKey;

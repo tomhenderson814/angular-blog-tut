@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Blockchain, Transaction, TimeBasedEnergyTradeContract } from '../../Code/src/blockchain.js';
+import { Blockchain, Transaction, TimeBasedEnergyTradeContract } from '../../../src/Code/src/blockchain';
 //import EC from 'elliptic';
 import { peopleDatabase } from '../../Code/src/adapter.js';
 //import { BehaviorSubject, Observable } from 'rxjs';

@@ -65,7 +65,7 @@
 
   	<div class="form-group">
 	    <label for="toAddress">To address</label>
-	    <input type="text" class="form-control" id="toAddress" aria-describedby="toAddressHelp" [(ngModel)]="newTx.toAddress">
+	    <input type="text" class="form-control" id="toAddress" aria-describedby="toAddressHelp" [(ngModel)]="toAddress">
 	    <small id="toAddressHelp" class="form-text text-muted">
 	    	The address of the wallet where you want to send the money to. You can type random text here (if you are not interested in recovering the funds)
 	    </small>
@@ -73,7 +73,7 @@
 
   	<div class="form-group">
 	    <label for="amount">Amount</label>
-	    <input type="number" class="form-control" id="amount" aria-describedby="amountHelp" [(ngModel)]="newTx.amount">
+	    <input type="number" class="form-control" id="amount" aria-describedby="amountHelp" [(ngModel)]="amount">
 	    <small id="amountHelp" class="form-text text-muted">
 	    	You can transfer any amount. Account balance is not checked in this demo. Have at it!
 	    </small>

@@ -3,7 +3,7 @@ const SHA256 = require('crypto-js/sha256');
 const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
 
-const { peopleDatabase } = require('./adapter.js');
+const { peopleDatabase, IWalletKey } = require('./adapter.js');
 
 
 class Transaction {
@@ -80,6 +80,9 @@ class Transaction {
     return publicKey.verify(this.calculateHash(), this.signature);
   }
 
+  /**
+   * @returns {boolean}
+   */
   process() {
     if (this.contract) {
       this.contract.execute(this);
@@ -149,6 +152,12 @@ class Block {
 }
 
 class Blockchain {
+
+  /**
+   * @param {Transaction} initialT
+   * @param {Transaction} initialTB
+   */
+
   constructor(initialT, initialTB) {
     this.chain = [this.createGenesisBlock(initialT, initialTB)];
     this.difficulty = 2;
@@ -366,11 +375,21 @@ class TimeBasedEnergyTradeContract {
     return SHA256(this.transactionTime + this.conclusion + this.startTimeTotal).toString();
   }
 
+  /**
+   * @param {Transaction} trans
+   * @param {Blockchain} blockc
+   * @param {IWalletKey[0]} signed
+   */
   activateContract(trans, blockc, signed){
     //this.blockchain.currentSD.push(this.hash);
     this.startEnergyTransfer(trans, blockc, signed);
    }
 
+  /**
+   * @param {Transaction} transaction
+   * @param {Blockchain} blockchain
+   * @param {IWalletKey[0]} sign
+   */
   startEnergyTransfer(transaction, blockchain, sign) {
     this.startTime = Date.now();
     //this.blockchain.currentSupplies.push(this.hash);
@@ -408,11 +427,18 @@ class TimeBasedEnergyTradeContract {
 
   }
 
-
+  /**
+   * @returns {number}
+   */
   getCurrentEnergyUsage() {
     return Math.random();
   }
   
+  /**
+   * @param {Transaction} transaction
+   * @param {Blockchain} blockchain
+   * @param {IWalletKey[0]} signing
+   */
   stopEnergyTransfer(transaction, blockchain, signing) {
     clearInterval(this.intervalId);
     console.log('Stopped transferring energy');
